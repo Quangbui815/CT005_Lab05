@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CT005 - Lab 05 Portfolio: Tác động của công nghệ đối với sự phát triển của trẻ</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat & Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'infographic-bg': '#f6f5ee',
+                        'navy-dark': '#1c2d42',
+                        'navy-accent': '#1c4587',
+                        'red-accent': '#d9232d',
+                        'card-bg': '#ffffff',
+                        'border-line': '#d1cdbf'
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f6f5ee;
+            font-family: 'Roboto', sans-serif;
+            color: #1c2d42;
+        }
+
+        .donuts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+        }
+
+        /* SVG Donut Chart Animation */
+        .circle-bg {
+            fill: none;
+            stroke: #e2e0d4;
+            stroke-width: 3.8;
+        }
+        .circle-fill {
+            fill: none;
+            stroke-width: 3.8;
+            stroke-linecap: round;
+            transition: stroke-dasharray 1.2s ease-in-out;
+        }
+
+        /* Custom Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -10px rgba(28, 45, 66, 0.12);
+        }
+        
+        .quote-box {
+            position: relative;
+        }
+        .quote-box::before {
+            content: "“";
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.15);
+            font-family: 'Montserrat', serif;
+            line-height: 1;
+        }
+        .quote-box::after {
+            content: "”";
+            position: absolute;
+            bottom: -40px;
+            right: 20px;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.15);
+            font-family: 'Montserrat', serif;
+            line-height: 1;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-4xl mx-auto bg-[#f6f5ee] rounded-2xl shadow-xl p-6 sm:p-12 border border-[#e8e5d8]">
+        
+        <!-- THÔNG TIN SINH VIÊN & HỌC HẦN -->
+        <div class="bg-white/80 p-6 rounded-xl border border-border-line mb-8 shadow-sm">
+            <h1 class="font-heading font-extrabold text-xl sm:text-2xl text-navy-accent mb-2">
+                NỘI DUNG THỰC HÀNH LAB 05 - TẠO VÀ QUẢN LÝ NỘI DUNG SỐ
+            </h1>
+            <p class="text-sm sm:text-base text-navy-dark">
+                <strong>Họ và Tên:</strong> Bùi Quang &nbsp;|&nbsp; <strong>MSSV:</strong> B2605828
+            </p>
+        </div>
+
+        <!-- MỤC 1: INFOGRAPHIC -->
+        <section class="mb-12">
+            <h2 class="font-heading font-bold text-xl sm:text-2xl text-navy-dark mb-6 pb-2 border-b-2 border-navy-accent inline-block">
+                1. Infographic Lợi ích Công nghệ số
+            </h2>
+
+            <!-- BẢNG INFOGRAPHIC -->
+            <div class="bg-[#f6f5ee] rounded-2xl border border-border-line p-4 sm:p-8 mt-4 shadow-inner">
+                <!-- HEADER INFOGRAPHIC -->
+                <header class="text-center mb-10 pb-6 border-b-2 border-border-line">
+                    <h3 class="font-heading font-extrabold text-2xl sm:text-4xl text-navy-dark leading-tight tracking-tight">
+                        Tác động của công nghệ<br class="hidden sm:inline"/> đối với sự phát triển của trẻ
+                    </h3>
+                </header>
+
+                <!-- SECTION 1: Icon Grid & Laptop Stat -->
+                <div class="mb-12 pb-10 border-b-2 border-border-line">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-6 bg-white/60 p-6 rounded-xl border border-border-line/60 shadow-sm">
+                            <p class="text-xs uppercase tracking-wider font-semibold text-navy-accent mb-3 text-center sm:text-left">
+                                Tỷ lệ trẻ tiếp xúc với công nghệ
+                            </p>
+                            <div id="baby-grid" class="grid grid-cols-10 gap-2 sm:gap-2.5 justify-items-center">
+                                <!-- JS generated baby icons -->
+                            </div>
+                            <div class="flex items-center justify-center sm:justify-start gap-6 mt-4 text-xs font-medium">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-red-accent inline-block"></span>
+                                    <span>Có tiếp xúc (85%)</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-3.5 h-3.5 rounded-full bg-navy-accent inline-block"></span>
+                                    <span>Không tiếp xúc (15%)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-6 flex flex-col items-center text-center md:text-left md:items-start">
+                            <div class="relative w-full max-w-[280px] mb-4 mx-auto md:mx-0">
+                                <div class="bg-navy-dark text-white rounded-t-xl p-4 pt-6 border-4 border-navy-dark shadow-md aspect-[16/10] flex flex-col justify-center items-center relative">
+                                    <div class="absolute top-2 w-2 h-2 rounded-full bg-gray-400"></div>
+                                    <span class="font-heading text-4xl sm:text-5xl font-extrabold text-red-accent tracking-tight">
+                                        85%
+                                    </span>
+                                </div>
+                                <div class="bg-gray-400 h-3 w-[116%] -ml-[8%] rounded-b-lg shadow-md relative">
+                                    <div class="w-12 h-1 bg-gray-600 rounded-full mx-auto"></div>
+                                </div>
+                            </div>
+                            <p class="text-sm sm:text-base leading-relaxed font-normal text-navy-dark/90 mt-2">
+                                Các cuộc khảo sát gần đây cho thấy <strong class="text-red-accent font-semibold">85% các bậc cha mẹ</strong> cho phép con cái của họ tiếp xúc với công nghệ: máy tính bảng, điện thoại thông minh, tivi và máy tính.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: Quote & Audio Recognition -->
+                <div class="mb-12 pb-10 border-b-2 border-border-line">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+                        <div class="md:col-span-6 bg-navy-dark text-white p-6 sm:p-8 rounded-xl shadow-lg quote-box flex flex-col justify-between hover-lift">
+                            <div class="relative z-10 pt-4">
+                                <p class="text-base sm:text-lg italic font-light leading-relaxed mb-6">
+                                    "Giao tiếp trực tiếp với một người khác sẽ phong phú hơn, ít nguy cơ hơn và ý nghĩa hơn nhiều so với việc... nói chuyện qua điện thoại."
+                                </p>
+                            </div>
+                            <div class="text-right border-t border-white/20 pt-3 relative z-10">
+                                <p class="font-heading font-semibold text-sm sm:text-base text-red-accent">Bác sĩ Lê Sơn</p>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-6 flex flex-col justify-between bg-white/50 p-6 rounded-xl border border-border-line/60">
+                            <p class="text-sm sm:text-base leading-relaxed text-navy-dark mb-4">
+                                Trẻ gặp khó khăn hơn trong việc hiểu âm thanh từ các thiết bị như điện thoại thông minh và máy tính bảng so với nghe giọng nói của một người thực đang cố gắng giao tiếp với mình.
+                            </p>
+                            
+                            <div class="w-full h-44 rounded-lg bg-navy-dark overflow-hidden relative flex items-center justify-center shadow-inner group">
+                                <svg class="w-full h-full object-cover opacity-90 transition-transform duration-500 group-hover:scale-105" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 20H400M0 40H400M0 60H400M0 80H400M0 100H400M0 120H400M0 140H400M0 160H400M0 180H400" stroke="#1c4587" stroke-width="0.5" stroke-dasharray="2 4"/>
+                                    <path d="M40 0V200M80 0V200M120 0V200M160 0V200M200 0V200M240 0V200M280 0V200M320 0V200M360 0V200" stroke="#1c4587" stroke-width="0.5" stroke-dasharray="2 4"/>
+                                    <g class="animate-pulse">
+                                        <path d="M220 50 C260 40, 310 60, 320 100 C330 140, 280 170, 230 160 C210 155, 200 130, 200 100 C200 70, 210 55, 220 50 Z" stroke="#3b82f6" stroke-width="2.5" fill="none"/>
+                                        <path d="M230 70 C260 65, 290 80, 295 105 C300 130, 270 145, 240 140" stroke="#60a5fa" stroke-width="1.5" fill="none"/>
+                                        <path d="M180 50 C140 40, 90 60, 80 100 C70 140, 120 170, 170 160 C190 155, 200 130, 200 100 C200 70, 190 55, 180 50 Z" stroke="#3b82f6" stroke-width="2.5" fill="none"/>
+                                        <path d="M170 70 C140 65, 110 80, 105 105 C100 130, 130 145, 160 140" stroke="#60a5fa" stroke-width="1.5" fill="none"/>
+                                    </g>
+                                    <circle cx="250" cy="80" r="4" fill="#d9232d" />
+                                    <circle cx="280" cy="110" r="3" fill="#60a5fa" />
+                                    <circle cx="230" cy="130" r="4" fill="#3b82f6" />
+                                    <circle cx="150" cy="80" r="4" fill="#d9232d" />
+                                    <circle cx="120" cy="110" r="3" fill="#60a5fa" />
+                                    <circle cx="170" cy="130" r="4" fill="#3b82f6" />
+                                    <line x1="250" y1="80" x2="280" y2="110" stroke="#60a5fa" stroke-width="1.5"/>
+                                    <line x1="280" y1="110" x2="230" y2="130" stroke="#60a5fa" stroke-width="1.5"/>
+                                    <line x1="150" y1="80" x2="120" y2="110" stroke="#60a5fa" stroke-width="1.5"/>
+                                    <line x1="120" y1="110" x2="170" y2="130" stroke="#60a5fa" stroke-width="1.5"/>
+                                    <rect x="20" y="150" width="8" height="30" fill="#1c4587" />
+                                    <rect x="32" y="130" width="8" height="50" fill="#d9232d" />
+                                    <rect x="44" y="140" width="8" height="40" fill="#1c4587" />
+                                    <rect x="56" y="160" width="8" height="20" fill="#1c4587" />
+                                    <rect x="336" y="140" width="8" height="40" fill="#1c4587" />
+                                    <rect x="348" y="120" width="8" height="60" fill="#d9232d" />
+                                    <rect x="360" y="150" width="8" height="30" fill="#1c4587" />
+                                </svg>
+                                <div class="absolute bottom-2 left-3 bg-navy-dark/80 px-2 py-0.5 rounded text-[10px] text-gray-300 font-mono">
+                                    AUDIO_PROCESSING_DIFFICULTY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 3: Parent Attitudes (3 Donut Charts) -->
+                <div class="mb-12 pb-10 border-b-2 border-border-line">
+                    <div class="donuts-container">
+                        <div class="bg-white/70 rounded-xl p-5 border border-border-line/70 flex flex-col items-center text-center hover-lift">
+                            <div class="relative w-36 h-36 mb-4">
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle-fill" stroke="#d9232d" stroke-dasharray="86, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center font-heading font-extrabold text-2xl text-navy-dark">
+                                    86%
+                                </div>
+                            </div>
+                            <h4 class="font-heading font-bold text-sm text-navy-dark mb-2 min-h-[40px] flex items-center justify-center">
+                                Phụ huynh hài lòng với tác động của công nghệ lên con cái mình.
+                            </h4>
+                            <p class="text-xs text-navy-dark/80 leading-relaxed pt-2 border-t border-border-line/50 w-full">
+                                Họ cho rằng có mối liên hệ giữa hiểu biết sâu sắc của con mình với việc sử dụng máy tính bảng.
+                            </p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-5 border border-border-line/70 flex flex-col items-center text-center hover-lift">
+                            <div class="relative w-36 h-36 mb-4">
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle-fill" stroke="#d9232d" stroke-dasharray="72, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center font-heading font-extrabold text-2xl text-navy-dark">
+                                    72%
+                                </div>
+                            </div>
+                            <h4 class="font-heading font-bold text-sm text-navy-dark mb-2 min-h-[40px] flex items-center justify-center">
+                                Phụ huynh quan ngại về việc sử dụng công nghệ.
+                            </h4>
+                            <p class="text-xs text-navy-dark/80 leading-relaxed pt-2 border-t border-border-line/50 w-full">
+                                Việc sử dụng các thiết bị sẽ khiến trẻ tiếp xúc với các nội dung không phù hợp, ảnh hưởng tới giấc ngủ và giảm thời gian cho các hoạt động ngoài trời.
+                            </p>
+                        </div>
+
+                        <div class="bg-white/70 rounded-xl p-5 border border-border-line/70 flex flex-col items-center text-center hover-lift">
+                            <div class="relative w-36 h-36 mb-4">
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                    <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    <path class="circle-fill" stroke="#1c4587" stroke-dasharray="15, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center font-heading font-extrabold text-2xl text-navy-dark">
+                                    15%
+                                </div>
+                            </div>
+                            <h4 class="font-heading font-bold text-sm text-navy-dark mb-2 min-h-[40px] flex items-center justify-center">
+                                Phụ huynh không cho phép con cái sử dụng thiết bị ở nhà.
+                            </h4>
+                            <p class="text-xs text-navy-dark/80 leading-relaxed pt-2 border-t border-border-line/50 w-full">
+                                Khuyến khích tuyệt đối không cho trẻ tiếp xúc với các thiết bị và dành nhiều thời gian hơn cho các hoạt động ngoài trời và tương tác trực tiếp.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: Expert Recommendation -->
+                <div>
+                    <div class="p-6 sm:p-8 bg-red-accent/5 border-l-4 border-red-accent rounded-r-xl">
+                        <p class="text-red-accent font-bold text-base sm:text-lg leading-relaxed text-center sm:text-justify font-sans">
+                            Đối với các gia đình cho phép trẻ em tiếp xúc điện thoại thông minh, máy tính bảng, TV và máy tính thì thời lượng sử dụng thiết bị là rất quan trọng. Các chuyên gia về phát triển trẻ em nhấn mạnh tầm quan trọng của việc ý thức rằng thời gian tương tác với các thiết bị không nên thay thế những gì cần thiết bậc nhất đối với sự phát triển của trẻ, đó là sự tương tác giữa người và người.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MỤC 2: VIDEO MINH HỌA -->
+        <section class="mb-10">
+            <h2 class="font-heading font-bold text-xl sm:text-2xl text-navy-dark mb-6 pb-2 border-b-2 border-navy-accent inline-block">
+                2. Video minh họa (Youtube)
+            </h2>
+            <div class="video-container shadow-lg border border-border-line">
+                <iframe src="https://studio.youtube.com/channel/UCPTxYGYnB-aYr-A1ezTHOrA" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="pt-6 border-t border-border-line text-center flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+            <p class="text-xs sm:text-sm font-medium text-navy-dark/70">
+                Để biết thêm thông tin, hãy truy cập <a href="https://www.trangwebhay.vn" target="_blank" class="text-navy-accent font-semibold hover:underline">www.trangwebhay.vn</a>.
+            </p>
+            <span class="hidden sm:inline text-border-line">|</span>
+            <a href="https://studio.youtube.com/channel/UCPTxYGYnB-aYr-A1ezTHOrA" target="_blank" class="inline-flex items-center gap-2 bg-red-accent hover:bg-red-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors shadow-sm">
+                <i class="fa-brands fa-youtube text-base"></i>
+                <span>Kênh YouTube</span>
+            </a>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const babyGrid = document.getElementById('baby-grid');
+            const totalIcons = 100;
+            const redIconsCount = 85;
+
+            for (let i = 0; i < totalIcons; i++) {
+                const icon = document.createElement('i');
+                icon.className = `fa-solid fa-child text-[14px] sm:text-[16px] transition-transform duration-200 hover:scale-125`;
+                
+                if (i < redIconsCount) {
+                    icon.classList.add('text-red-accent');
+                } else {
+                    icon.classList.add('text-navy-accent');
+                }
+                
+                babyGrid.appendChild(icon);
+            }
+        });
+    </script>
+</body>
+</html>
